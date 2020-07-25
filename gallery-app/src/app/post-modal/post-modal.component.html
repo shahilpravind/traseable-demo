@@ -1,0 +1,27 @@
+<ion-content>
+  <ion-grid class="ion-no-padding ion-align-items-end" style="margin-left: 10px; margin-right: 10px; margin-bottom: 10px;">
+    <ion-row>
+      <ion-col>
+        <ion-button class="ion-float-right ion-no-margin" fill="clear" color="light" (click)="onCancel()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-align-items-center">
+      <ion-col>
+        <ion-card class="ion-no-margin">
+          <ion-img src="{{ img }}"></ion-img>
+          
+          <ion-card-header>
+            <ion-card-subtitle style="font-size:0.9em; font-weight:bold;">{{ date }}</ion-card-subtitle>
+          </ion-card-header>
+          
+          <ion-card-content>
+            {{ caption }}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      TraSeable Gallery
+    </ion-title>
+
+    <ion-toggle (ionChange)="toggleDarkMode()" color="light" slot="end"></ion-toggle>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Gallery</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4" size-xl="3"
+        *ngFor="let photo of photos; index as position">
+
+        <ion-card (click)="postPreview(photo.filepath, photo.date, photo.caption)" style="background-color: white; border-radius:2px;">
+          <ion-img src="{{ photo.filepath }}"></ion-img>
+          <ion-card-header>
+            <ion-card-subtitle style="font-size:0.9em;font-weight:bold;">{{ photo.date }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            {{ photo.caption }}
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" [disabled]="nextUrl === null">
+    <ion-infinite-scroll-content
+      loadingSpinner="crescent">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addNewImage()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
